@@ -20,7 +20,7 @@ using namespace std;
 */
 int ContactosRegistrados = 0;
 int ContactosEliminados  = 0;
-string Regla = "=============================================================";
+string Regla = "=========================================================================================================";
 
 /*****************************
 Estructura de fecha y Agenda
@@ -110,8 +110,8 @@ int main(int argc, char *argv[]) {
 				case 2:{
 							int op;
 							do{
-								cout<<"Menú de selección de busqueda";
-								cout<<"1)Busqueda por codigo.\n2)Busqueda por número de celular.\n3)Busqueda por nombre.\n4)Busqueda por Email.\n5)Busqueda por número de telefono.\n6)Salir.";
+								cout<<"\n=====================Menú de selección de busqueda====================";
+								cout<<"\n1)Busqueda por codigo.\n2)Busqueda por número de celular.\n3)Busqueda por nombre.\n4)Busqueda por Email.\n5)Busqueda por número de telefono.\n6)Salir.\n";
 								do{//esta parte se puede reemplazar por un capturador de errores como try ya que aun con las restricciones planteadas daria error si se introdujera un string
 									cout<<"Ingrese su elección: ";
 									cin>>op;
@@ -169,11 +169,11 @@ int MenuPrimario(){
 	int x;
 	
 	cout << Regla << endl;
-	cout << "|\tBienvenido a tu Agenda Electr?nica (Contactos)\t    |" << endl;
+	cout << "|\t\t\t\tBienvenido a tu Agenda Electr?nica (Contactos)\t\t\t\t|" << endl;
 	cout << Regla << endl;
 		
 	cout << Regla << endl;
-	cout << "| (1) Agregar Nuevo contacto   | (2) Obsiones de busqueda   |  (3) Listar   | (4) Eliminar contacto  |  (5) Salir   |" << endl;
+	cout << "| (1) Agregar Nuevo contacto   | (2) Opciones de busqueda   |  (3) Listar   | (4) Eliminar contacto  |  (5) Salir   |" << endl;
 	cout << Regla << endl;
 	
 	cout << "Esperando respuesta: ";
@@ -216,7 +216,7 @@ void Eliminar(){
     Lec.open("programacion.txt",ios::in);//abrimos en modo lectura
     ofstream Aux("auxiliar.txt",ios::out);//archivo para sobre escrivir los registros modificados
     if(Lec.is_open()){
-        cout<<"Codigo de contacto que desea eliminar: ";
+        cout<<"\nCodigo de contacto que desea eliminar: \n";
         cin>>CoAux;
         Lec>>Nombre;
         while (!Lec.eof()){
@@ -227,7 +227,7 @@ void Eliminar(){
             Lec>>Codigo;
             if (Codigo==CoAux)
             {
-                cout<<"Se elimino ";
+                cout<<"Se elimino \n";
             }else{
                 Aux<<Nombre<<" "<<Telefono<<" "<<Celular<<" "<<Email<<" "<<Fecha<<" "<<Codigo<<endl;
             }            
