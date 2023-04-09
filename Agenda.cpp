@@ -195,7 +195,7 @@ int MenuSecundario() {
 	cout << Regla << endl;
 
 	cout << "|\t\t\t\t\t\t\t    |" << endl;
-	cout << "|\t\t      Sí hay contactos" << " (" << (ContactosRegistrados - ContactosEliminados) << ")\t\t    |" << endl;
+	cout << "|\t\t      Si hay contactos" << " (" << (ContactosRegistrados - ContactosEliminados) << ")\t\t    |" << endl;
 	cout << "|\t\t\t\t\t\t\t    |" << endl;
 
 	cout << Regla << endl;
@@ -243,11 +243,11 @@ InsertarMenu: 														/*Etiqueta de menú para insertar contactos*/
 
 		ContactosRegistrados++;										/*Se incrementa la variable, indicando nuevo contacto*/
 
-		cout << "\n\t¡Agregado con exito!" << endl << endl;
+		cout << "\n\tAgregado con exito!" << endl << endl;
 
 	InsertarOtroContacto: 											/*Etiqueta que pregunta sobre otro contacto*/
 		do {
-			cout << "\n\t¿Desea agregar otro contacto?" << endl;
+			cout << "\n\tDesea agregar otro contacto?" << endl;
 			cout << "\t(1) Si, (2) No: ";
 			cin >> x;
 			cin.ignore();											/*Ignora el resto de flujo de datos*/
@@ -268,7 +268,7 @@ InsertarMenu: 														/*Etiqueta de menú para insertar contactos*/
 
 	}
 	else {
-		cout << "Llego al límite de contactos permitidos en la agenda." << endl << endl;
+		cout << "Llego al limite de contactos permitidos en la agenda." << endl << endl;
 	}
 
 InsertarFin:														/*Etiqueta para detener y retornar*/
@@ -529,8 +529,8 @@ ActualizarOtroContacto:										/*Etiqueta para actualizar otro contacto*/
 
 	/*Menú para seleccionar que atributos desean actualizar*/
 	do {
-		cout << "\n\t¿Que dato le gustaría actualizar de este contacto?" << endl;
-		cout << "  (1)Nombre | (2)Teléfono | (3)Celular (4)Email | (5)Ninguno" << endl;
+		cout << "\n\t¿Que dato le gustaria actualizar de este contacto?" << endl;
+		cout << "  (1)Nombre | (2)Telefono | (3)Celular (4)Email | (5)Ninguno" << endl;
 		cout << Regla << endl;
 
 		cout << "Esperando respuesta: ";
@@ -592,7 +592,7 @@ void Eliminar(struct Agenda Contactos[], int posicion) {
 		Contactos[posicion].Email = " ";
 		ContactosEliminados++;
 
-		cout << "\n¡El ex-contacto \"" << Nombre << "\" ha sido eliminado con exito!\n\n";
+		cout << "\nEl ex-contacto \"" << Nombre << "\" ha sido eliminado con exito!\n\n";
 	}
 
 	return;
@@ -640,33 +640,33 @@ void CargarContactos(struct Agenda Contactos[]) {
 	switch (x) {
 	case 1:
 		/*Primer contacto*/
-		Contactos[ContactosRegistrados].Nombre				= "Pedro Picapiedra";
-		Contactos[ContactosRegistrados].Telefono			= "+51 222111";
-		Contactos[ContactosRegistrados].Celular				= "+51 963852741";
+		Contactos[ContactosRegistrados].Nombre				= "Pedro";
+		Contactos[ContactosRegistrados].Telefono			= "222111";
+		Contactos[ContactosRegistrados].Celular				= "963852741";
 		Contactos[ContactosRegistrados].Email				= "pedropicapiedra@gmail.com";
 		Contactos[ContactosRegistrados].Fecha.Nacimiento	= "16/12/1986";
 		ContactosRegistrados++;
 
 		/*Segundo contacto*/
-		Contactos[ContactosRegistrados].Nombre				= "Pablo Marmol";
-		Contactos[ContactosRegistrados].Telefono			= "+51 221133";
-		Contactos[ContactosRegistrados].Celular				= "+51 987654321";
+		Contactos[ContactosRegistrados].Nombre				= "Pablo";
+		Contactos[ContactosRegistrados].Telefono			= "221133";
+		Contactos[ContactosRegistrados].Celular				= "987654321";
 		Contactos[ContactosRegistrados].Email				= "pablomarmol@gmail.com";
 		Contactos[ContactosRegistrados].Fecha.Nacimiento	= "22/08/1993";
 		ContactosRegistrados++;
 
 		/*Tercer contacto*/
-		Contactos[ContactosRegistrados].Nombre				= "Vilma Grava";
-		Contactos[ContactosRegistrados].Telefono			= "+51 223311";
-		Contactos[ContactosRegistrados].Celular				= "+51 951874236";
+		Contactos[ContactosRegistrados].Nombre				= "Vilma";
+		Contactos[ContactosRegistrados].Telefono			= "223311";
+		Contactos[ContactosRegistrados].Celular				= "951874236";
 		Contactos[ContactosRegistrados].Email				= "vilmagrava@gmail.com";
 		Contactos[ContactosRegistrados].Fecha.Nacimiento	= "06/04/1996";
 		ContactosRegistrados++;
 
 		/*Cuarto contacto*/
-		Contactos[ContactosRegistrados].Nombre				= "Betty Caliza";
-		Contactos[ContactosRegistrados].Telefono			= "+51 224433";
-		Contactos[ContactosRegistrados].Celular				= "+51 951632478";
+		Contactos[ContactosRegistrados].Nombre				= "Betty";
+		Contactos[ContactosRegistrados].Telefono			= "224433";
+		Contactos[ContactosRegistrados].Celular				= "951632478";
 		Contactos[ContactosRegistrados].Email				= "bettycaliza@gmail.com";
 		Contactos[ContactosRegistrados].Fecha.Nacimiento	= "10/07/1999";
 		ContactosRegistrados++;
@@ -701,7 +701,7 @@ bool HayContactos(struct Agenda Contactos[]) {
 }
 
 void Detenerse() {
-	cout << "\t¡Presione una tecla para continuar!";
+	cout << "\tPresione una tecla para continuar!";
 	system("PAUSE>NUL");								/*Pausar la aplicación sin mensaje de salida*/
 }
 void LimpiarPantalla() {
@@ -715,7 +715,7 @@ int Salir() {
 
 	/*Centinela general*/
 	do {
-		cout << "\n\t¿Esta segur@ de querer hacerlo?" << endl;
+		cout << "\n\tEsta segur@ de querer hacerlo?" << endl;
 		cout << "\t(1) Si, (2) No: ";
 		cin >> x;
 		cin.ignore();									/*Ignora el resto de flujo de datos*/
