@@ -45,7 +45,7 @@ struct Agenda {
 int MenuPrimario();					//menú que muestra las obciones existentes
 
 /*Relevante e importante*/
-void Insertar(struct Agenda Contactos[]);			/*Inserta contactos en la agenda*/
+void Agregar(struct Agenda Contactos[]);			/*Inserta contactos en la agenda*/
 
 /*Relevante e importante*/ //modulos de busqueda
 void BuscarPorCodigo();//buscara contactos basado en el codigo que se proporcione
@@ -55,13 +55,10 @@ void BuscarPorEmail();//buscara contactos basado en el email que se proporcione
 void BuscarPorTelefono();//buscara contactos basado en el telefono que se proporcione
 
 /*Relevante e importante*/
-void Listar(struct Agenda Contactos[]);				/*Lista todos los contactos existentes*/
-void Imprimir(struct Agenda Contactos[], int);		/*Mostrar un contacto seleccionado*/
+void lectura();				/*Lista todos los contactos existentes*/
 
 /*Relevante e importante*/
-void Actualizar(struct Agenda Contactos[], int);	/*Actualiza un contacto seleccionado en la agenda*/
-/*Relevante e importante*/
-void Eliminar(struct Agenda Contactos[], int);		/*Elimina un contacto seleccionado en la agenda*/
+void eliminar();		/*Elimina un contacto seleccionado en la agenda*/
 
 int VerificarContacto(struct Agenda Contactos[], string);	/*Verifica si el contacto especificado existe*/
 
@@ -99,77 +96,73 @@ Agenda::Agenda() {
 *****************************/
 int main(int argc, char *argv[]) {
 	setlocale(LC_CTYPE, "spanish");
-	int x;											/*Almacena las opciones seleccionadas*/
-	int salir = 0;                                  /*bandera para salir*/
+	int x;											/*Almacena las opciones seleccionadas*/                                /*bandera para salir*/
 	Agenda Contactos[CANTIDAD]; 					/*Definici?n de la variable Contactos con la cantidad*/
 	
 	do{											/*Etiqueta para retornar al Menu recursivamente*/
 		
 			do {
-				x = MenuPrimario();					/*Primer Men� donde la agenda est? vac?a*/
-			} while(x < 1 || x > 2);
+				x = MenuPrimario();					
+			} while(x < 1 || x > 5);
 			
-			switch (x){								/*En este Men� se validan 2 opciones (Insertar, Salir)*/
+			switch (x){								/*En este Men� se validan 2 opciones*/
 				case 1: {
-					Insertar(Contactos);			/*Men� para insertar datos*/
-					break;
-				}
+						Agregar(Contactos);			/*Men� para insertar datos*/
+						}break;
 				case 2:{
-					int op;
-					do{
-						cout<<"Menú de selección de busqueda";
-						cout<<"1)Busqueda por codigo.\n2)Busqueda por número de celular.\n3)Busqueda por nombre.\n4)Busqueda por Email.\n5)Busqueda por número de telefono.\n6)Salir.";
-						do{//esta parte se puede reemplazar por un capturador de errores como try ya que aun con las restricciones planteadas daria error si se introdujera un string
-							cout<<"Ingrese su elección: ";
-							cin>>op;
-							if (op!=1 && op!=2 && op!=3 && op!=4 && op!=5 && op!=6){
-								cout<<"ERROR buelba a ingresar";
+							int op;
+							do{
+								cout<<"Menú de selección de busqueda";
+								cout<<"1)Busqueda por codigo.\n2)Busqueda por número de celular.\n3)Busqueda por nombre.\n4)Busqueda por Email.\n5)Busqueda por número de telefono.\n6)Salir.";
+								do{//esta parte se puede reemplazar por un capturador de errores como try ya que aun con las restricciones planteadas daria error si se introdujera un string
+									cout<<"Ingrese su elección: ";
+									cin>>op;
+									if (op!=1 && op!=2 && op!=3 && op!=4 && op!=5 && op!=6){
+										cout<<"ERROR buelba a ingresar";
+									}
+								} while (op!=1 && op!=2 && op!=3 && op!=4 && op!=5 && op!=6);
+								
+							} while (op!=6);
+							switch (op)
+							{
+							case 1:
+								BuscarPorCodigo();//buscara contactos basado en el codigo que se proporcione
+								break;
+							case 2:
+								BuscarPorCelular();//buscara contactos basado en el celular que se proporcione
+								break;
+							case 3:
+								BuscarPorNombre();//buscara contactos basado en el nombre que se proporcione
+								break;
+							case 4:
+								BuscarPorEmail();//buscara contactos basado en el email que se proporcione
+								break;
+							case 5:
+								BuscarPorTelefono();//buscara contactos basado en el telefono que se proporcione
+								break;
+							case 6:
+								cout<<"Saliendo del menú de busqueda....";
+								break;
 							}
-						} while (op!=1 && op!=2 && op!=3 && op!=4 && op!=5 && op!=6);
-						
-					} while (op!=6);
-					switch (op)
-					{
-					case 1:
-						BuscarPorCodigo();//buscara contactos basado en el codigo que se proporcione
-						BuscarPorCelular();//buscara contactos basado en el celular que se proporcione
-						BuscarPorNombre();//buscara contactos basado en el nombre que se proporcione
-						BuscarPorEmail();//buscara contactos basado en el email que se proporcione
-						BuscarPorTelefono();//buscara contactos basado en el telefono que se proporcione
-												break;
-					case 1:
-						/* code */
-						break;
-					case 1:
-						/* code */
-						break;
-					case 1:
-						/* code */
-						break;
-					case 1:
-						/* code */
-						break;
-					case 1:
-						/* code */
-						break;
-					
-					default:
-						break;
-					}
-					
-				}
-				case 3:
-				case 4:
-				case 5:
-					salir = Salir();				/*Centinela para Salir*/
-					break;
+							system("pause");
+							system("cls"); 
+						}break;
+				case 3:{
+						lectura();
+						}break;
+				case 4:{
+						eliminar();
+						}break;
+				case 5:{/*Centinela para Salir*/
+					cout<<"Saliendo del menú principal";
+						}break;
 				default:
 					cout << "Up's, ha ocurrido algo inesperado, presione una tecla para continuar!." << endl;
 					system("PAUSE>NUL");
 					break;
 			}
 	}
-	while (salir == 0);						/*Se retorna al Men� principal en caso de que no haya seleccionado Salir*/
+	while (x!=5);						/*Se retorna al Men� principal en caso de que no haya seleccionado Salir*/
 	
 	return 0;
 }
