@@ -190,7 +190,7 @@ void Lectura(){//imprime la lista completa de contactos
 
     if (archivo.fail())
     {
-        cout<<"no se pudo abrir el archivo";
+        cout<<"no se pudo abrir el archivo devido a que aun no se cargo ningun contacto..";
         exit(1);
     }
     while (!archivo.eof()){//miesntras no sea el final del archivo
@@ -201,6 +201,14 @@ void Lectura(){//imprime la lista completa de contactos
 }
 
 //##################ELIMINACIÓN DE CONTACTOS###############
+/*Considero que esta parte es importante ya que como no podemos eliminar directamente 
+los datos que deseemos deun archivo .txt se recurre a la sobre escritura en este caso 
+se modifica lo que se desee y se transfiere a un nuevo archivo .txt donde se alojaran los datos 
+y al mismo tiempo este nuevo archivo que se creo una vez termine se transferirse los datos el 
+anterior archivo se eliminara y el nuevo se re nombrara como el anterior, pero desde el punto de 
+vista de recopilación de datos el hecho de que se elimine el anterior archivo genera sierto problema con respecto a
+quetal si el usuario borro por equibocación un contacto que no debia, ya no podra recuperarlo porque no se creo 
+un respaldo de datos eliminados es un problema que aun no logro solucionar por lo demas considero que esta bien*/
 void Eliminar(){
     ifstream Lec;
     string Nombre, NoAux, Telefono, Celular, Email, Fecha;
@@ -449,44 +457,3 @@ void Agregar(struct Agenda Contactos[]){//agregara un nuevo contacto a la lista 
     }
     Escr.close();
 }
-
-
-
-
-
-
-
-
-
-void Detenerse(){
-	cout << "\t�Presione una tecla para continuar!";
-	system("PAUSE");								/*Pausar la aplicaci�n sin mensaje de salida*/
-}
-
-void LimpiarPantalla(){
-	system("CLS");									/*Limpiar pantalla*/
-}
-
-void Dormir(int x){
-	Sleep(x * 1000);							/*Dormir el programa*/
-}
-
-int Salir(){
-	int x;
-	
-	/*Centinela general*/
-	do {
-		cout << "\n\tEstá seguro(a) de querer hacerlo?" << endl;
-		cout << "\t(1) Sí, (2) No: ";
-		cin >> x;
-		
-	} while(x < 1 || x > 2);
-	switch (x)
-	{
-	case 1:
-		return 1;
-	case 2:
-		return 2;
-	}
-}
-
