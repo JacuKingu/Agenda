@@ -20,7 +20,7 @@ using namespace std;
 */
 int ContactosRegistrados = 0;
 int ContactosEliminados  = 0;
-string Regla = "=========================================================================================================";
+string Regla = "===========================================================================================================================";
 
 /*****************************
 Estructura de fecha y Agenda
@@ -107,16 +107,16 @@ int main(int argc, char *argv[]) {
 				case 1: {
 						Agregar(Contactos);			/*Men� para insertar datos*/
 						}break;
-				case 2:{
-							int op;
+				case 2:{	//este menú permite determinar mediante que identificador se desea realizar la busqueda de un contacto
+							int op;//bandera de elecciones 
 							do{
 								cout<<"\n=====================Menú de selección de busqueda====================";
 								cout<<"\n1)Busqueda por codigo.\n2)Busqueda por número de celular.\n3)Busqueda por nombre.\n4)Busqueda por Email.\n5)Busqueda por número de telefono.\n6)Salir.\n";
 								do{//esta parte se puede reemplazar por un capturador de errores como try ya que aun con las restricciones planteadas daria error si se introdujera un string
 									cout<<"Ingrese su elección: ";
 									cin>>op;
-									if (op!=1 && op!=2 && op!=3 && op!=4 && op!=5 && op!=6){
-										cout<<"ERROR buelba a ingresar";
+									if (op!=1 && op!=2 && op!=3 && op!=4 && op!=5 && op!=6){//para evitar el ingreso de datos que no correspondan a las opciones
+										cout<<"ERROR buelba a ingresar";//(se debe aclarar que esta opción no captura errores de tipo ingreso de dato string..por el momento)
 									}
 								} while (op!=1 && op!=2 && op!=3 && op!=4 && op!=5 && op!=6);
 								
@@ -146,10 +146,10 @@ int main(int argc, char *argv[]) {
 							system("cls"); 
 						}break;
 				case 3:{
-						Lectura();
+						Lectura();//esta opción mustra el listado de todos los contactos almacenados
 						}break;
 				case 4:{
-						Eliminar();
+						Eliminar();//esta opción elimina un contacto basado en el codigo de este
 						}break;
 				case 5:{/*Centinela para Salir*/
 					cout<<"Saliendo del menú principal";
@@ -169,7 +169,7 @@ int MenuPrimario(){
 	int x;
 	
 	cout << Regla << endl;
-	cout << "|\t\t\t\tBienvenido a tu Agenda Electr?nica (Contactos)\t\t\t\t|" << endl;
+	cout << "|\t\t\t\t\tBienvenido a tu Agenda Electr?nica (Contactos)\t\t\t\t\t|" << endl;
 	cout << Regla << endl;
 		
 	cout << Regla << endl;
