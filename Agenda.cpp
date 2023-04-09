@@ -42,8 +42,7 @@ struct Agenda {
 	FUNCIONES PRINCIPALES 
 *****************************/
 
-int MenuPrimario();					/*Se muestra cuando no hay contactos*/
-int MenuSecundario();				/*Se muestra cuando hay contactos que gestionar*/
+int MenuPrimario();					//menÃº que muestra las obciones existentes
 
 /*Relevante e importante*/
 void Insertar(struct Agenda Contactos[]);			/*Inserta contactos en la agenda*/
@@ -104,13 +103,9 @@ int main(int argc, char *argv[]) {
 	int x;											/*Almacena las opciones seleccionadas*/
 	int salir = 0;                                  /*bandera para salir*/
 	Agenda Contactos[CANTIDAD]; 					/*Definici?n de la variable Contactos con la cantidad*/
-	CargarContactos(Contactos);						/*Menï¿½ para cargar datos o iniciar una nueva agenda*/
 	
 	do{											/*Etiqueta para retornar al Menu recursivamente*/
-		if (HayContactos(Contactos)){				/*Verifica si no hay contactos*/
-			ContactosRegistrados = 0;
-			ContactosEliminados  = 0;
-			/*No hay contactos*/
+		
 			do {
 				x = MenuPrimario();					/*Primer Menï¿½ donde la agenda est? vac?a*/
 			} while(x < 1 || x > 2);
@@ -120,31 +115,9 @@ int main(int argc, char *argv[]) {
 					Insertar(Contactos);			/*Menï¿½ para insertar datos*/
 					break;
 				case 2:
-					salir = Salir();				/*Centinela para Salir*/
-					break;
-				default:
-					cout << "Up's, ha ocurrido algo inesperado, presione una tecla para continuar!." << endl;
-					system("PAUSE>NUL");
-					break;
-			}
-			
-		} else {
-			/*Si hay contactos*/
-			do {
-				x = MenuSecundario();				/*Segundo Menï¿½ donde la agenda contiene contactos*/
-			} while(x < 1 || x > 4);
-			
-			switch (x){								/*Este Menï¿½ contiene mï¿½s opciones (Insertar, buscar, listar)*/
-				case 1: 
-					Insertar(Contactos);
-					break;
-				case 2:
-					Buscar(Contactos);				/*Menï¿½ para realizar una bï¿½squeda de contactos por categor?as*/
-					break;
-				case 3: 
-					Listar(Contactos);				/*Listar todos los contactos existentes de manera interactiva*/
-					break;
+				case 3:
 				case 4:
+				case 5:
 					salir = Salir();				/*Centinela para Salir*/
 					break;
 				default:
@@ -152,7 +125,6 @@ int main(int argc, char *argv[]) {
 					system("PAUSE>NUL");
 					break;
 			}
-		}
 	}
 	while (salir == 0);						/*Se retorna al Menï¿½ principal en caso de que no haya seleccionado Salir*/
 	
@@ -160,43 +132,14 @@ int main(int argc, char *argv[]) {
 }
 
 int MenuPrimario(){
-	char x;										/*Sirve para almacenar la respuesta (opci?n)*/
-	
-	LimpiarPantalla();
-	
-	cout << Regla << endl;
-	cout << "|\tBienvenido a tu Agenda Electr?nica (Contactos)\t    |" << endl;
-	cout << Regla << endl;
-	
-	cout << "|\t\t\t\t\t\t\t    |" << endl;
-	cout << "|\t\t       No hay contactos\t\t\t    |" << endl;
-	cout << "|\t\t\t\t\t\t\t    |" << endl;
-	
-	cout << Regla << endl;
-	cout << "| (1) Nuevo contacto           |        (2) Salir           |" << endl;
-	cout << Regla << endl;
-	
-	cout << "Esperando respuesta: ";
-	cin >> x;
-	
-	return x;									/*Convierte y retorna la opci?n seleccionada*/
-}
-
-int MenuSecundario(){
 	int x;
 	
-	LimpiarPantalla();
-	
 	cout << Regla << endl;
 	cout << "|\tBienvenido a tu Agenda Electr?nica (Contactos)\t    |" << endl;
 	cout << Regla << endl;
-	
-	cout << "|\t\t\t\t\t\t\t    |" << endl;
-	cout << "|\t\t      S? hay contactos" << " (" << (ContactosRegistrados - ContactosEliminados) << ")\t\t    |" << endl;
-	cout << "|\t\t\t\t\t\t\t    |" << endl;
 		
 	cout << Regla << endl;
-	cout << "| (1) Nuevo   | (2) Buscar   |  (3) Listar   |  (4) Salir   |" << endl;
+	cout << "| (1) Agregar Nuevo contacto   | (2) Obsiones de busqueda   |  (3) Listar   | (4) Eliminar contacto  |  (5) Salir   |" << endl;
 	cout << Regla << endl;
 	
 	cout << "Esperando respuesta: ";
@@ -545,8 +488,8 @@ void Actualizar(struct Agenda Contactos[], int posicion){
 		
 		/*Menï¿½ para seleccionar qu? atributos desean actualizar*/
 		do {
-			cout << "\n\t¿Qué dato le gustaría actualizar de este contacto?" << endl;
-			cout << "  (1)Nombre | (2)Teléfono | (3)Celular (4)Email | (5)Ninguno" << endl;
+			cout << "\n\tï¿½Quï¿½ dato le gustarï¿½a actualizar de este contacto?" << endl;
+			cout << "  (1)Nombre | (2)Telï¿½fono | (3)Celular (4)Email | (5)Ninguno" << endl;
 			cout << Regla << endl;
 			
 			cout << "Esperando respuesta: ";
@@ -711,14 +654,14 @@ bool HayContactos(struct Agenda Contactos[]){
 			c++;
 	
 	if (c > 0)
-		return false; //Está vació
+		return false; //Estï¿½ vaciï¿½
 	
 	return true;
 }
 
 void Detenerse(){
-	cout << "\t¡Presione una tecla para continuar!";
-	system("PAUSE");								/*Pausar la aplicación sin mensaje de salida*/
+	cout << "\tï¿½Presione una tecla para continuar!";
+	system("PAUSE");								/*Pausar la aplicaciï¿½n sin mensaje de salida*/
 }
 
 void LimpiarPantalla(){
@@ -734,14 +677,24 @@ int Salir(){
 	
 	/*Centinela general*/
 	do {
-		cout << "\n\t¿Está seguro(a) de querer hacerlo?" << endl;
-		cout << "\t(1) Sí, (2) No: ";
+		cout << "\n\tï¿½Estï¿½ seguro(a) de querer hacerlo?" << endl;
+		cout << "\t(1) Sï¿½, (2) No: ";
 		cin >> x;
 		
 	} while(x < 1 || x > 2);
+	switch (x)
+	{
+	case 1:
+		return 1;
+	case 2:
+		return 2;
 	
-	cout << endl;
-	
-	return x;
+	default:
+		if (x!=1 || x!=2)
+		{
+			cout << "Solo se puede ingresar 1 o 2"<<endl;
+		}
+		break;
+	}
 }
 
