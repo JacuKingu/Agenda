@@ -169,7 +169,7 @@ int MenuPrimario(){
 	int x;
 	
 	cout << Regla << endl;
-	cout << "|\t\t\t\t\tBienvenido a tu Agenda Electr?nica (Contactos)\t\t\t\t\t|" << endl;
+	cout << "|\t\t\t\tBienvenido a tu Agenda Electr?nica (Contactos)\t\t\t\t|" << endl;
 	cout << Regla << endl;
 		
 	cout << Regla << endl;
