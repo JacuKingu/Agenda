@@ -1,5 +1,5 @@
 /*****************************
- Librer�as utilizadas
+ Librer�as utilzadas
 *****************************/
 #include <iostream>					/*Flujo de entrada y salida de datos*/
 #include <string.h>					/*Funciones de manejo de cadenas*/
@@ -8,14 +8,15 @@
 #include<stdlib.h>
 #include<fstream>					/*permite el trabajo con documentos de texto*/
 
+
 #define CANTIDAD 500 				/*Cantidad m�xima de contactos: 500*/
 
 using namespace std;
 
 /*
-	Variables globales que representan 
+	Variables globales que representan
 	contactos registrados, eliminados y
-	una variable Regla que presentara una
+	una variable Regla que presentar� una
 	mejor vista en el programa.
 */
 int ContactosRegistrados = 0;
@@ -37,12 +38,12 @@ struct Agenda {
 	string Telefono;
 	string Celular;
 	string Email;
-	Cumple Fecha;					/*Referencia a la estructura Cumple*/
-	Agenda();  						/*Declaraci?n del constructor*/
+	Cumple Fecha;									/*Referencia a la estructura Cumple*/
+	Agenda();  										/*Declaraci�n del constructor*/
 };
 
 /*****************************
-	FUNCIONES PRINCIPALES 
+	FUNCIONES PRINCIPALES
 *****************************/
 
 int MenuPrimario();					//menú que muestra las obciones existentes
@@ -70,13 +71,13 @@ int VerificarContactoPorNumero(string s);//valida la existencia de un número pa
 /*****************************
 	FUNCIONES SECUNDARIAS
 *****************************/
-void Detenerse();									/*Detiene la ejecuci?n, hasta que se presione una tecla*/
-void LimpiarPantalla();								/*Limpia la pantalla para mostrar un nuevo Men�*/
-void Dormir(int);									/*Aplica un retraso temporal*/
-int Salir();										/*Centinela que pregunta por la salida de los Men�es*/
+void Detenerse();								/*Detiene la ejecuci�n, hasta que se presione una tecla*/
+void LimpiarPantalla();							/*Limpia la pantalla para mostrar un nuevo men�*/
+void Dormir(int);								/*Aplica un retraso temporal*/
+int Salir();									/*Centinela que pregunta por la salida de los men�es*/
 
 /*****************************
- DEFINICI?N DEL CONSTRUCTOR
+ DEFINICI�N DEL CONSTRUCTOR
 -----------------------------
 Inicializando la estructura.
 *****************************/
@@ -90,7 +91,7 @@ Agenda::Agenda() {
 }
 
 /*****************************
-	  FUNCIÓN PRINCIPAL
+	  FUNCI�N PRINCIPAL
 *****************************/
 int main(int argc, char *argv[]) {
 	setlocale(LC_CTYPE, "spanish");
@@ -175,9 +176,11 @@ int MenuPrimario(){
 	cout << Regla << endl;
 	cout << "| (1) Agregar Nuevo contacto   | (2) Opciones de busqueda   |  (3) Listar   | (4) Eliminar contacto  |  (5) Salir   |" << endl;
 	cout << Regla << endl;
-	
+
 	cout << "Esperando respuesta: ";
 	cin >> x;
+	cin.ignore();													/*Ignora el resto de flujo de datos*/
+
 	return x;
 }
 
